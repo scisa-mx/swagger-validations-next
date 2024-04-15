@@ -15,6 +15,14 @@ This package has mainly two uses.
 2. "swagger-object-validator": "^1.4.5"
 3. "bootstrap": "^5.3.3"
 
+## Import to project globaly
+main.ts
+´´´
+import swaggerValidationsNext from 'swagger-validations-next'
+const appInstance = createApp(App);
+swaggerValidationsNext(appInstance)
+´´´
+
 ## Usage
 Start by initializing the swagger file that will be used for the validations
 This must be run before using any form validator
