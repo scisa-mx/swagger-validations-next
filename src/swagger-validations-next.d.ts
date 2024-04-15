@@ -1,3 +1,5 @@
-declare module 'swagger-validations-next' {
-    // Aquí define los tipos necesarios para el módulo swagger-validations-next
-  }
+declare module "*.vue" {
+  import { DefineComponent } from "vue";
+  const component: DefineComponent<{}, {}, any>;
+  export default component;
+}
