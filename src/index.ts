@@ -1,4 +1,4 @@
-import component from "./components/component.vue";
+import FormGeneratorValidator from "./components/FormGeneratorValidator.vue";
 
 // interface MyPluginOptions {
 //   // Propiedades de options
@@ -6,6 +6,6 @@ import component from "./components/component.vue";
 
 export default {
   install: (app: any) => {
-    app.component("scomponent", component);
+    app.component("FormGeneratorValidator", FormGeneratorValidator);
   },
 };
