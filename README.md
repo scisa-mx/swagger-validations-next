@@ -13,6 +13,7 @@ This package has mainly two uses.
 ## Dependencies
 1. Axios
 2. "swagger-object-validator": "^1.4.5"
+3. "bootstrap": "^5.3.3"
 
 ## Usage
 Start by initializing the swagger file that will be used for the validations
@@ -93,7 +94,6 @@ export default {
 
 ## Local usage
 1. Generate the package with `npm pack`
-2. Use this file in the other project package-json `swagger-validations: "file:./swagger-validations-0.1.1.tgz"`
 
 ## Usando el paquete
 1. Antes de usar cualquier validacion se tiene que llamar el initializeValidations de formValidations.js
