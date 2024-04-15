@@ -1,14 +1,14 @@
 <template>
-  <b-form-group :label="label">
-    <b-form-input
+  <div class="form-group">
+    <label>{{ label }}</label>
+    <input
       :ref="`${inputRef}-input`"
       v-model="localModel[modelKey].value"
+      class="form-control"
+      type="text"
     />
-    <small
-      :ref="`${inputRef}-error`"
-      class="d-none"
-    > ERROR </small>
-  </b-form-group>
+    <small :ref="`${inputRef}-error`" class="d-none"> ERROR </small>
+  </div>
 </template>
 
 <script>
@@ -38,12 +38,12 @@ export default {
   computed: {
     localModel: {
       get() {
-        return this.model
+        return this.model;
       },
       set(value) {
-        this.$emit('update:model', value)
+        this.$emit("update:model", value);
       },
     },
   },
-}
+};
 </script>

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <b-form @submit.prevent="handleSubmit">
-      <b-row class="m-1 rounded mx-0">
-        <b-col v-for="(value, key) in filteredModel" :key="key" sm="6">
+    <form @submit.prevent="handleSubmit">
+      <div class="row m-1 rounded mx-0">
+        <div v-for="(value, key) in filteredModel" :key="key" class="col-sm-6">
           <input-validator
             v-if="value.type === 'input'"
             :model="model"
@@ -30,14 +30,14 @@
             :value="model[key].value"
             @input="model[key].value = $event"
           />
-        </b-col>
-        <b-col class="d-flex justify-content-end" sm="12">
-          <b-button variant="primary" type="submit">
+        </div>
+        <div class="col-sm-12 d-flex justify-content-end">
+          <button type="submit" class="btn btn-primary text-white">
             {{ "save" }}
-          </b-button>
-        </b-col>
-      </b-row>
-    </b-form>
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
 </template>
 

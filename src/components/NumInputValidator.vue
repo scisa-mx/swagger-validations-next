@@ -1,18 +1,16 @@
 <template>
-  <b-form-group :label="label">
+  <div class="form-group">
+    <label>{{ label }}</label>
     <num-input
       :ref="`${inputRef}-input`"
       v-model="localModel[modelKey].value"
     />
-    <small
-      :ref="`${inputRef}-error`"
-      class="d-none"
-    > ERROR </small>
-  </b-form-group>
+    <small :ref="`${inputRef}-error`" class="d-none"> ERROR </small>
+  </div>
 </template>
 
 <script>
-import NumInput from './NumInput.vue'
+import NumInput from "./NumInput.vue";
 
 export default {
   components: {
@@ -43,12 +41,12 @@ export default {
   computed: {
     localModel: {
       get() {
-        return this.model
+        return this.model;
       },
       set(value) {
-        this.$emit('update:model', value)
+        this.$emit("update:model", value);
       },
     },
   },
-}
+};
 </script>

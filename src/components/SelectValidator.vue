@@ -1,17 +1,22 @@
 <template>
-  <b-form-group :label="label">
-    <b-form-select
+  <div class="form-group">
+    <label>{{ label }}</label>
+    <select
       :ref="`${inputRef}-input`"
       v-model="localModel[modelKey].value"
-      :options="options"
-    />
-    <small
-      :ref="`${inputRef}-error`"
-      class="d-none"
-    > ERROR </small>
-  </b-form-group>
+      class="form-control"
+    >
+      <option
+        v-for="option in options"
+        :key="option.value"
+        :value="option.value"
+      >
+        {{ option.text }}
+      </option>
+    </select>
+    <small :ref="`${inputRef}-error`" class="d-none"> ERROR </small>
+  </div>
 </template>
-
 <script>
 export default {
   props: {
@@ -43,12 +48,12 @@ export default {
   computed: {
     localModel: {
       get() {
-        return this.model
+        return this.model;
       },
       set(value) {
-        this.$emit('update:model', value)
+        this.$emit("update:model", value);
       },
     },
   },
-}
+};
 </script>

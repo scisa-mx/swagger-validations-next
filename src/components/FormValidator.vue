@@ -1,14 +1,14 @@
 <template>
   <div>
-    <b-form @submit.prevent="handleSubmit()">
+    <form @submit.prevent="handleSubmit">
       <slot />
-    </b-form>
+    </form>
   </div>
 </template>
 
 <script>
-import { handleSwaggerValidationErrorMessages } from '../helpers'
-import { validateForm } from '../formValidations'
+import { handleSwaggerValidationErrorMessages } from "../helpers.ts";
+import { validateForm } from "../formValidations.ts";
 
 export default {
   props: {
@@ -18,7 +18,7 @@ export default {
     },
     spec: {
       type: String,
-      default: () => '',
+      default: () => "",
     },
     refs: {
       type: Object,
@@ -39,42 +39,42 @@ export default {
   },
   watch: {
     validate() {
-      this.handleSubmit()
+      this.handleSubmit();
     },
   },
   methods: {
     handleSubmit() {
-      let refsKeys = null
-      let refs = null
+      let refsKeys = null;
+      let refs = null;
       // remove previous validation classes and errors
       if (this.insideComponent) {
-        refsKeys = Object.keys(this.$children[0].$refs)
-        refs = this.$children[0].$refs
+        refsKeys = Object.keys(this.$children[0].$refs);
+        refs = this.$children[0].$refs;
       } else {
-        refsKeys = Object.keys(this.$slots.default[0].context.$refs)
-        refs = this.$slots.default[0].context.$refs
+        refsKeys = Object.keys(this.$slots.default[0].context.$refs);
+        refs = this.$slots.default[0].context.$refs;
       }
       refsKeys
-        .filter(x => x.endsWith('-input'))
-        .forEach(ref => {
-          refs[`${ref}`].$el.classList.remove('is-invalid')
-        })
+        .filter((x) => x.endsWith("-input"))
+        .forEach((ref) => {
+          refs[`${ref}`].$el.classList.remove("is-invalid");
+        });
       refsKeys
-        .filter(x => x.endsWith('-error'))
-        .forEach(ref => {
-          refs[`${ref}`].classList.remove('d-flex')
-          refs[`${ref}`].classList.add('d-none')
-        })
+        .filter((x) => x.endsWith("-error"))
+        .forEach((ref) => {
+          refs[`${ref}`].classList.remove("d-flex");
+          refs[`${ref}`].classList.add("d-none");
+        });
 
       // validate form with swagger spects
       validateForm({ model: this.model, spec: this.spec })
         .then(() => {
-          this.ifValid()
+          this.ifValid();
         })
-        .catch(errors => {
-          handleSwaggerValidationErrorMessages(errors, refs)
-        })
+        .catch((errors) => {
+          handleSwaggerValidationErrorMessages(errors, refs);
+        });
     },
   },
-}
+};
 </script>
