@@ -105,3 +105,7 @@ export default {
 
 ## Usando el paquete
 1. Antes de usar cualquier validacion se tiene que llamar el initializeValidations de formValidations.js
+
+## Publicar paquete
+1. `npm login`
+2. `npm publish`
